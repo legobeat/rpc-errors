@@ -17,9 +17,36 @@ import {
   dummyData,
 } from './__fixtures__';
 import { getMessageFromCode, serializeError } from './utils';
+import { JsonRpcRequest } from '@metamask/utils';
 
 const rpcCodes = errorCodes.rpc;
 
+describe('types', () => {
+  it('should not run', () => {
+    const foo: JsonRpcRequest[] = [
+      {
+        id: '123',
+        method: 'foo',
+        jsonrpc: '2.0',
+      },
+      {
+        id: '123',
+        method: 'foo',
+        jsonrpc: '2.0',
+        params: undefined
+      },
+      {
+        id: '123',
+        method: 'foo',
+        jsonrpc: '2.0',
+        params: 1,
+      }
+    ];
+
+
+
+  });
+});
 describe('serializeError', () => {
   it('handles invalid error: non-object', () => {
     const result = serializeError(invalidError0);
